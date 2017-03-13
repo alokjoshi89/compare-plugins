@@ -1,0 +1,6 @@
+org/jenkinsci/plugins/compareplugins/ComparePluginsAction/doTestConnection.stapler
+org/jenkinsci/plugins/compareplugins/ComparePluginsAction$ComparePluginsActionDescriptor.class
+org/jenkinsci/plugins/compareplugins/ComparePluginsAction.class
+org/jenkinsci/plugins/compareplugins/PluginInfo.class
+org/jenkinsci/plugins/compareplugins/URLUtils.class
+META-INF/annotations/hudson.Extension

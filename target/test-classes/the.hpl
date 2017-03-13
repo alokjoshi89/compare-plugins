@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Group-Id: org.jenkins-ci.plugins
+Short-Name: compare-plugins
+Long-Name: compare-plugins
+Plugin-Version: 1.0-SNAPSHOT (private-03/13/2017 12:21-alojoshi)
+Hudson-Version: 1.625.3
+Jenkins-Version: 1.625.3
+Plugin-Dependencies: credentials:1.9.4
+Plugin-Developers: 
+Libraries: /Users/alojoshi/plugins-list-plugin/compare-plugins/src/mai
+ n/resources,/Users/alojoshi/plugins-list-plugin/compare-plugins/targe
+ t/classes,/Users/alojoshi/.m2/repository/commons-lang/commons-lang/2.
+ 6/commons-lang-2.6.jar
+Resource-Path: /Users/alojoshi/plugins-list-plugin/compare-plugins/src
+ /main/webapp
+

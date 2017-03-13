@@ -1,0 +1,55 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <j:set var="instance" value="${it}"/>
+  <j:set var="descriptor" value="${instance.descriptor}"/>
+  <j:getStatic var="permission" className="hudson.model.Item" field="CREATE"/>
+  <l:layout permission="${permission}" title="${%Compare.Plugins.Plugin.Title}">
+    <!-- <st:include page="/hudson/model/View/sidepanel.jelly" /> -->
+    <l:main-panel>
+      <style>
+        table.comparePluginsPlugin { /* width: 100%; */ }
+        table.comparePluginsPlugin th { font-weight: bold; text-align: left; }
+        table.comparePluginsPlugin td { text-align: left; }
+      </style>
+      <h1>${%Compare.Plugins.Plugin.Title}</h1>
+      <h2>${%Compare.Plugins.Plugin.Description}</h2>
+      <h3>${%Compare.Plugins.Plugin.Note}</h3>
+      <br/>
+      <f:form name="query" action="query" method="get">
+        <f:section title="${%Compare.Plugins.Plugin.Query.Section.Title}">
+          <f:entry title="${%Compare.Plugins.Plugin.Query.Section.RemoteUrl.Title}" field="remoteUrl">
+            <f:textbox name="remoteUrl" field="remoteUrl" value="${it.remoteUrl}"/>
+          </f:entry>
+          <f:entry title="${%Credentials}" field="credentialId">
+            <c:select xmlns:c="/lib/credentials"/>
+          </f:entry>
+          <f:block>
+            <input type="submit" value="${%Compare.Plugins.Plugin.Query.Section.Submit.Name}" />
+          </f:block>
+        </f:section>
+      </f:form>
+      <br/>
+      <j:if test="${it.pluginsDiffer}">
+        <f:section title="${%Compare.Plugins.Plugin.View.Section.Title}">
+          <table class="comparePluginsPlugin" cellpadding="3" cellspacing="3">
+            <tr>
+              <th>Name</th>
+              <th>Enabled?</th>
+              <th>Wiki URL</th>
+              <th>Version</th>
+            </tr>
+            <j:forEach var="plugin" items="${it.diffPlugins}">
+              <tr>
+                <td>${plugin.shortName}</td>
+                <td>${plugin.enabled}</td>
+                <td><a target="_blank" href="${plugin.url}">${plugin.url}</a></td>
+                <td>${plugin.version}</td>
+              </tr>
+            </j:forEach>
+          </table>
+        </f:section>
+      </j:if>
+    </l:main-panel>
+  </l:layout>
+</j:jelly>
+
